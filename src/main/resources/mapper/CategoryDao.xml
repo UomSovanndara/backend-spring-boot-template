@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.backend.dao.CategoryDao">
+	<resultMap type='com.backend.domain.Category' id='categoryResult'>
+        <id property='id' column='id'/>
+        <result property='name' column='name'/>
+        <result property='state' column='state'/>
+        <result property='createdDate' column='createdDate'/>
+        <result property='createdByUserId' column='createdByUserId'/>
+        <result property='updatedDate' column='updatedDate'/>
+        <result property='updatedByUserId' column='updatedByUserId'/>
+    </resultMap>
+    
+	<select id="findById" resultType="com.backend.domain.Category">
+		SELECT *FROM Category WHERE id = #{id}
+	</select>
+	
+	<insert id="add" parameterType="com.backend.domain.Category" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
+         INSERT INTO Category
+      (
+         name,
+         note,
+         createdDate,
+         updatedDate,
+         createdByUserId
+      )
+         VALUES
+      (
+         #{name},
+         #{note},
+         Now(),
+         Now(),
+         #{createdByUserId}
+      )
+    </insert>
+	<update id="update" parameterType="com.backend.domain.Category">
+        UPDATE Category
+        SET
+              name = #{name},
+              state = #{state},
+              note = #{note},
+              createdDate = #{createdDate},
+              createdByUserId = #{createdByUserId},
+              updatedDate = Now(),
+              updatedByUserId = #{updatedByUserId}
+        WHERE id = #{id}
+    </update>
+</mapper>
