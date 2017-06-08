@@ -1,5 +1,7 @@
 package com.backend.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,18 +22,18 @@ public class CategoryController {
     private CategoryDao dao;
 
     @RequestMapping(value = "v1", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<Category> create(@RequestBody Category body) {
+    public ResponseEntity<Category> create(HttpServletRequest request, @RequestBody Category body) {
         dao.add(body);
         return new ResponseEntity<Category>(body, HttpStatus.OK);
     }
 
     @RequestMapping(value = "v1/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Category> findById(@PathVariable Long id) {
+    public ResponseEntity<Category> findById(HttpServletRequest request, @PathVariable Long id) {
         return new ResponseEntity<Category>(dao.findById(id), HttpStatus.OK);
     }
 
     @RequestMapping(value = "v1/{id}", method = RequestMethod.PUT, produces = "application/json")
-    public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody Category body) {
+    public ResponseEntity<Category> update(HttpServletRequest request, @PathVariable Long id, @RequestBody Category body) {
         Category domain = dao.findById(id);
         if (domain == null) {
             // throw
