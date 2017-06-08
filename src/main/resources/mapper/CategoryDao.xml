@@ -23,15 +23,13 @@
          name,
          note,
          createdDate,
-         updatedDate,
          createdByUserId
       )
          VALUES
       (
          #{name},
          #{note},
-         Now(),
-         Now(),
+         #{createdDate},
          #{createdByUserId}
       )
     </insert>
@@ -43,7 +41,7 @@
               note = #{note},
               createdDate = #{createdDate},
               createdByUserId = #{createdByUserId},
-              updatedDate = Now(),
+              updatedDate = #{updatedDate},
               updatedByUserId = #{updatedByUserId}
         WHERE id = #{id}
     </update>

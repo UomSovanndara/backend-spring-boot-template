@@ -10,13 +10,12 @@ import lombok.Setter;
 @Setter
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Category {
-    private Long   id;
-    private String name;
-    private Long   state;
-    private String note;
-    private Date   createdDate;
-    private Long   createdByUserId;
-    private Date   updatedDate;
-    private Long   updatedByUserId;
+public class Category extends AbstractLongDomainEntity {
+    private static final long serialVersionUID = 1L;
+    private Long              id;
+    private String            name;
+    private String            note;
+    private Long              createdByUserId;
+    private Date              createdDate;
+    private Long              updatedByUserId;
 }

@@ -1,8 +1,7 @@
 package com.backend.web;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,15 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.backend.dao.CategoryDao;
 import com.backend.domain.Category;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("catagories")
+@Slf4j
 public class CategoryController {
 
-    @Autowired
-    private CategoryDao dao;
+    @Resource(name = "categoryDaoImpl")
+    protected CategoryDao dao;
 
     @RequestMapping(value = "v1", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Category> create(HttpServletRequest request, @RequestBody Category body) {
+        log.info("============= create ==========");
         dao.add(body);
         return new ResponseEntity<Category>(body, HttpStatus.OK);
     }
