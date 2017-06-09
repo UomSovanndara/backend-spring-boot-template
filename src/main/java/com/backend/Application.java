@@ -41,4 +41,5 @@ public class Application extends WebMvcConfigurerAdapter {
         converters.add(customJackson2HttpMessageConverter());
         super.extendMessageConverters(converters);
     }
+    
 }

@@ -14,7 +14,17 @@ GRANT  ALL PRIVILEGES ON pos.* TO 'pos'@'localhost';
 2. MyBatis - http://www.mybatis.org/mybatis-3/ | http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/index.html
 3. Flyway - https://flywaydb.org/
 4. Lombok- https://projectlombok.org/
+5. Swagger - http://swagger.io/
 
 # Run
 
 $ gradlew bootRun
+
+# Create Flyway Patch
+
+$ gradlew createFlywayPatch
+
+# Swagger - API document
+
+UI : http://localhost:8080/swagger-ui.html
+JSON : http://localhost:8080/v2/api-docs
