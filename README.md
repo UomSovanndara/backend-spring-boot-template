@@ -27,4 +27,9 @@ $ gradlew createFlywayPatch
 # Swagger - API document
 
 UI : http://localhost:8080/swagger-ui.html
+
 JSON : http://localhost:8080/v2/api-docs
+
+# Spring DevTools
+
+Enable hot reloading, so every time we make a change in our files an application restart will be triggered automatically
