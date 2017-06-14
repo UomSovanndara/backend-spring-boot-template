@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend.dao.CategoryDao;
-import com.backend.domain.Category;
+import com.backend.dao.ProductDao;
+import com.backend.domain.Product;
 import com.backend.json.ResponseList;
 
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("catagories")
+@RequestMapping("products")
 @Slf4j
-public class CategoryController {
+public class ProductController {
 
-    @Resource(name = "categoryDaoImpl")
-    protected CategoryDao dao;
+    @Resource(name = "productDaoImpl")
+    protected ProductDao dao;
 
     /**
      * create node with json
@@ -36,10 +36,10 @@ public class CategoryController {
      * @return
      */
     @RequestMapping(value = "v1/json", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<Category> create(HttpServletRequest request, @RequestBody Category body) {
+    public ResponseEntity<Product> create(HttpServletRequest request, @RequestBody Product body) {
         log.info("============= create ==========");
         dao.add(body);
-        return new ResponseEntity<Category>(body, HttpStatus.OK);
+        return new ResponseEntity<>(body, HttpStatus.OK);
     }
     /**
      * create node with form
@@ -49,10 +49,10 @@ public class CategoryController {
      * @return
      */
     @RequestMapping(value = "v1", method = RequestMethod.POST)
-    public ResponseEntity<Category> createWithForm(HttpServletRequest request, @ModelAttribute Category domain) {
+    public ResponseEntity<Product> createWithForm(HttpServletRequest request, @ModelAttribute Product domain) {
         log.info("============= create ==========");
         dao.add(domain);
-        return new ResponseEntity<Category>(domain, HttpStatus.OK);
+        return new ResponseEntity<>(domain, HttpStatus.OK);
     }
 
     /**
@@ -63,8 +63,8 @@ public class CategoryController {
      * @return
      */
     @RequestMapping(value = "v1/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Category> findById(HttpServletRequest request, @PathVariable Long id) {
-        return new ResponseEntity<Category>(dao.findById(id), HttpStatus.OK);
+    public ResponseEntity<Product> findById(HttpServletRequest request, @PathVariable Long id) {
+        return new ResponseEntity<>(dao.findById(id), HttpStatus.OK);
     }
 
     /**
@@ -76,8 +76,8 @@ public class CategoryController {
      * @return
      */
     @RequestMapping(value = "v1/{id}", method = RequestMethod.PUT, produces = "application/json")
-    public ResponseEntity<Category> update(HttpServletRequest request, @PathVariable Long id, @RequestBody Category body) {
-        Category domain = dao.findById(id);
+    public ResponseEntity<Product> update(HttpServletRequest request, @PathVariable Long id, @RequestBody Product body) {
+        Product domain = dao.findById(id);
         if (domain == null) {
             // throw
         }
@@ -85,7 +85,7 @@ public class CategoryController {
         domain.setState(body.getState());
         // TODO : update properties
         dao.update(domain);
-        return new ResponseEntity<Category>(domain, HttpStatus.OK);
+        return new ResponseEntity<>(domain, HttpStatus.OK);
     }
 
     /**
@@ -97,11 +97,11 @@ public class CategoryController {
      * @return
      */
     @RequestMapping(value = "v1", method = RequestMethod.GET)
-    public ResponseEntity<ResponseList<Category>> getPage(HttpServletRequest request,
+    public ResponseEntity<ResponseList<Product>> getPage(HttpServletRequest request,
             @RequestParam(value = "limit", defaultValue = "10") int limit,
             @RequestParam(value = "offset", defaultValue = "0") String offset) {
         log.info("============= getPage ==========");
-        return new ResponseEntity<ResponseList<Category>>(dao.getPage(limit, offset), HttpStatus.OK);
+        return new ResponseEntity<>(dao.getPage(limit, offset), HttpStatus.OK);
     }
 
     /**
@@ -111,7 +111,7 @@ public class CategoryController {
      * @return
      */
     @RequestMapping(value = "v1/all", method = RequestMethod.GET)
-    public ResponseEntity<Collection<Category>> getAll(HttpServletRequest request) {
+    public ResponseEntity<Collection<Product>> getAll(HttpServletRequest request) {
         log.info("============= getAll ==========");
         return new ResponseEntity<>(dao.getAll(), HttpStatus.OK);
     }

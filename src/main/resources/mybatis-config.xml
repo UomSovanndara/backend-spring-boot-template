@@ -13,6 +13,7 @@
        
        see example : https://github.com/mybatis/spring-boot-starter/blob/master/mybatis-spring-boot-samples/mybatis-spring-boot-sample-xml/src/main/resources/mybatis-config.xml
 -->
+<!-- move to application.properties 
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
@@ -25,3 +26,4 @@
         <mapper resource="mapper/CategoryDao.xml"/>
     </mappers>
 </configuration>
+     -->
