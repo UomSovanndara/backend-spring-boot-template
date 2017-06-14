@@ -1,8 +1,9 @@
 package com.backend.dao;
 
 import java.util.Collection;
-
 import org.apache.ibatis.annotations.Param;
+
+import com.backend.json.ResponseList;
 
 public interface Dao<T> {
 
@@ -31,4 +32,13 @@ public interface Dao<T> {
     Integer countWithFilters(@Param("domain") T domain);
 
     Collection<T> findByFields(@Param("domain") T domain);
+
+    ResponseList<T> getPage(int limit, String offset);
+
+    Collection<T> getPageItems(@Param("limit") int limit, @Param("offset") String offset);
+
+    ResponseList<T> getPageWithFields(T domain, int pageSize, String cursorKey, String sortBy, boolean isAscending);
+
+    Collection<T> getPageItemsWithFields(@Param("domain") T domain, @Param("limit") int pageSize,
+            @Param("offset") String cursorKey, @Param("sortBy") String sortBy, @Param("isAscending") boolean isAscending);
 }
