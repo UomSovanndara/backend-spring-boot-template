@@ -15,28 +15,28 @@ import lombok.Data;
  */
 @Data
 public abstract class AbstractLongDomainEntity implements Serializable {
-    public static final String COLUMN_NAME_ID      = "id";
+    public static final String COLUMN_NAME_ID = "id";
     public static final String COLUMN_NAME_VERSION = "version";
-    public static final String COLUMN_NAME_STATE   = "state";
-    private static final long  serialVersionUID    = 1982069997503175834L;
+    public static final String COLUMN_NAME_STATE = "state";
+    private static final long serialVersionUID = 1982069997503175834L;
 
     /** unique id */
-    private Long               id;
+    private Long id;
     /** version number changes */
     @JsonIgnore
-    private Long               version;
+    private Long version;
     /** state */
-    private Long               state;
+    private Long state;
     /** created by */
     @JsonIgnore
-    private String             createdBy;
+    private String createdBy;
     /** created date */
     @JsonIgnore
-    private Date               createdDate;
+    private Date createdDate;
     /** updated by */
     @JsonIgnore
-    private String             updatedBy;
+    private String updatedBy;
     /** updated date */
     @JsonIgnore
-    private Date               updatedDate;
+    private Date updatedDate;
 }

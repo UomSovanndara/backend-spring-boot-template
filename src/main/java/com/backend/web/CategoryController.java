@@ -41,6 +41,7 @@ public class CategoryController {
         dao.add(body);
         return new ResponseEntity<Category>(body, HttpStatus.OK);
     }
+
     /**
      * create node with form
      * 

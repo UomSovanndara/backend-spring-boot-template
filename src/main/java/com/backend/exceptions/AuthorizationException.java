@@ -6,12 +6,12 @@ package com.backend.exceptions;
  */
 @SuppressWarnings("serial")
 public class AuthorizationException extends RuntimeException {
-    
+
     public AuthorizationException() {
         super();
     }
 
-	public AuthorizationException(String msg) {
-		super(msg);
-	}
+    public AuthorizationException(String msg) {
+        super(msg);
+    }
 }

@@ -20,7 +20,7 @@ public class Application extends WebMvcConfigurerAdapter {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-    
+
     @Bean
     public MappingJackson2HttpMessageConverter customJackson2HttpMessageConverter() {
         MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
@@ -41,5 +41,5 @@ public class Application extends WebMvcConfigurerAdapter {
         converters.add(customJackson2HttpMessageConverter());
         super.extendMessageConverters(converters);
     }
-    
+
 }

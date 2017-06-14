@@ -13,10 +13,10 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Category extends AbstractLongDomainEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Long              id;
-    private String            name;
-    private String            note;
-    private Long              createdByUserId;
-    private Date              createdDate;
-    private Long              updatedByUserId;
+    private Long id;
+    private String name;
+    private String note;
+    private Long createdByUserId;
+    private Date createdDate;
+    private Long updatedByUserId;
 }

@@ -28,12 +28,12 @@ import com.google.common.collect.FluentIterable;
 public abstract class DaoImpl<T extends AbstractLongDomainEntity, D extends Dao<T>> implements Dao<T> {
 
     protected static final Logger LOG = LoggerFactory.getLogger(DaoImpl.class);
-    protected Class<D>            daoImplClazz;
+    protected Class<D> daoImplClazz;
 
     @Autowired
-    private SqlSession            sqlSession;
+    private SqlSession sqlSession;
 
-    private D                     dao;
+    private D dao;
 
     public DaoImpl(final Class<D> clazzDao) {
         this.daoImplClazz = clazzDao;
@@ -233,7 +233,7 @@ public abstract class DaoImpl<T extends AbstractLongDomainEntity, D extends Dao<
         // if (responseList == null || responseList.getItems().isEmpty()) {
         // return new ResponseList<T>(Collections.<T> emptyList());
         // }
-        
+
         final Collection<T> items = dao.getPageItemsWithFields(domain, limit + 1, cursor, sortBy, isAscending);
         if (items == null || items.isEmpty()) {
             return new ResponseList<T>(Collections.<T> emptyList());
