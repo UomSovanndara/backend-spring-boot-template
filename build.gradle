@@ -7,6 +7,7 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath('se.transmode.gradle:gradle-docker:1.2')
 	}
 }
 
@@ -14,9 +15,16 @@ apply plugin: 'java'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
+apply plugin: 'docker'
+
+war {
+    baseName = 'backend-spring-boot-template'
+    version =  '0.1.0'
+}
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
@@ -49,4 +57,17 @@ task createFlywayPatch() {
         def f = file("$flywayMigrationsDir/V${Calendar.instance.time.time}__POS_XXXX_change_description.sql")
         ant.touch(file: f)
     }
+}
+// Build Docker Image
+task buildDocker(type: Docker, dependsOn: build) {
+  push = false 
+  maintainer 'Sovanndara Uom <uom.sovanndara@gmail.com>'
+  applicationName = war.baseName
+  dockerfile = file('src/main/docker/Dockerfile')
+  doFirst {
+    copy {
+      from war
+      into stageDir
+    }
+  }
 }
