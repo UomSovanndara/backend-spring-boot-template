@@ -1,0 +1,42 @@
+<md-sidenav class="md-whiteframe-4dp" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left">
+
+    <md-toolbar layout="row" class="md-whiteframe-1dp">
+        <div class="md-toolbar-tools">
+            <h1>Sovanndara UOM</h1>
+        </div>
+    </md-toolbar>
+
+    <md-list>
+        <md-list-item ng-click="show('/dashboard')">
+            <ng-md-icon icon="dashboard"></ng-md-icon>
+            <p>Dashboard</p>
+        </md-list-item>
+        <br />
+        <md-subheader class="md-no-sticky">Supervisor management</md-subheader>
+        <md-list-item ng-click="test">
+            <ng-md-icon icon="android"></ng-md-icon>
+            <p>Customers</p>
+        </md-list-item>
+        <md-list-item ng-click="test">
+            <ng-md-icon icon="android"></ng-md-icon>
+            <p>Products</p>
+        </md-list-item>
+        <br />
+        <md-subheader class="md-no-sticky">General</md-subheader>
+        <md-list-item ng-click="test">
+            <ng-md-icon icon="supervisor_account"></ng-md-icon>
+            <p>Setting</p>
+        </md-list-item>
+
+        <md-list-item ng-click="show('/login')">
+            <ng-md-icon icon="supervisor_account"></ng-md-icon>
+            <p>Login</p>
+        </md-list-item>
+
+        <md-list-item ng-click="test">
+            <ng-md-icon icon="supervisor_account"></ng-md-icon>
+            <p>Table</p>
+        </md-list-item>
+    </md-list>
+
+</md-sidenav>

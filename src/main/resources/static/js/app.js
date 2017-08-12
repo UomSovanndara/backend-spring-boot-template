@@ -36,6 +36,9 @@ angular.module("adminApp", dependency).config(function($routeProvider, $mdThemin
             templateUrl:'partials/user.html',
             controller : 'UserCtrl'
         })
+        .when('/sale',{
+            templateUrl:'partials/sale.html'
+        })
         .otherwise({
             redirectTo: '/login'
         });
@@ -71,7 +74,7 @@ angular.module("adminApp", dependency).config(function($routeProvider, $mdThemin
     });
     */
 }).controller('AppCtrl', function($scope, $log, $mdSidenav, $location) {
-    $scope.toShow = "home";
+    $scope.toShow = "/home";
     $scope.languageIcon = 'language';
     $scope.clickIcon = 'add';
 
@@ -91,6 +94,7 @@ angular.module("adminApp", dependency).config(function($routeProvider, $mdThemin
         }
     };
     $scope.show = function (toShow) {
+        $scope.toShow = toShow;
         $location.url(toShow);
     };
 });

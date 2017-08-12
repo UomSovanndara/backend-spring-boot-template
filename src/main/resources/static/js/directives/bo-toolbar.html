@@ -1,0 +1,47 @@
+<md-toolbar layout="column" class="md-whiteframe-1dp">
+
+    <div class="md-toolbar-tools">
+
+        <md-button class="menu md-icon-button" aria-label="Show User List" hide-gt-sm ng-click="toggleMenu()">
+            <ng-md-icon icon="menu"></ng-md-icon>
+        </md-button>
+
+        <h2>Backoffice app</h2>
+
+        <span flex></span>
+
+        <md-button class="md-icon-button" aria-label="Notifications">
+            <ng-md-icon icon="notifications"></ng-md-icon>
+        </md-button>
+        <md-button class="menu md-icon-button" aria-label="Dashboard">
+            <ng-md-icon icon="dashboard"></ng-md-icon>
+        </md-button>
+        <md-menu md-position-mode="target-right target" md-offset="0 54">
+
+            <md-button class="md-icon-button" aria-label="Language" ng-click="openMenu($mdOpenMenu, $event)">
+                <ng-md-icon icon="{{ languageIcon }}" options='{"duration": 200, "rotation": "none"}'></ng-md-icon>
+            </md-button>
+
+            <md-menu-content width="3">
+
+                <md-menu-item>
+                    <md-button>
+                        Bosanski
+                    </md-button>
+                </md-menu-item>
+
+                <md-menu-item>
+                    <md-button>
+                        English
+                    </md-button>
+                </md-menu-item>
+
+            </md-menu-content>
+
+        </md-menu>
+        <md-button class="menu md-icon-button" aria-label="Dashboard">
+            <ng-md-icon icon="dashboard"></ng-md-icon>
+        </md-button>
+
+    </div>
+</md-toolbar>
